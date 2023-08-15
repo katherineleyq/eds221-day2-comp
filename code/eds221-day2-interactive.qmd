@@ -6,6 +6,11 @@ execute:
     warning: false
 ---
 
+```{r}
+library(tidyverse)
+library(purrr)
+```
+
 ## Making & indexing data in R
 
 ### Vectors
@@ -146,3 +151,21 @@ ttest_example$p.value
 
 Mean size for trees in Site A is greater than the mean size in Site B (... my stats summary, `r ttest_example$p.value`)
 
+## Data frames
+
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"), 
+                    mass = c(130, 195, 150))
+
+class(fruit)
+
+fruit[3, 2]
+
+purrr::pluck(fruit, "type", 2)
+
+#both of the following commands accomplish the same thing, just using different packages
+
+starwars$starships[[1]][2]
+
+purrr::pluck(starwars, "starships", 1, 2)
+```
